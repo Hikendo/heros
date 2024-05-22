@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styles: ``
 })
 export class AddHeroPageComponent {
+  public publishers =[
+    {id:'DC Comics', describe: 'Dc - Comics'},
+    {id:'Marvel Comics', describe: 'Marvel - Comics'}
+
+  ]
 
 }

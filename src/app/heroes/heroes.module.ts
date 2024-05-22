@@ -7,6 +7,10 @@ import { LayoutPageComponent } from './pages/layout-page/layout-page.component';
 import { ListPageComponent } from './pages/list-page/list-page.component';
 import { AddHeroPageComponent } from './pages/add-hero-page/add-hero-page.component';
 import { SearchHeroPageComponent } from './pages/search-hero-page/search-hero-page.component';
+import { MaterialModule } from '../material/material.module';
+import { HeroCardComponent } from './components/hero-card/hero-card.component';
+import { HeroesImgPipe } from './pipes/heroes-img.pipe';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -15,11 +19,15 @@ import { SearchHeroPageComponent } from './pages/search-hero-page/search-hero-pa
     LayoutPageComponent,
     ListPageComponent,
     AddHeroPageComponent,
-    SearchHeroPageComponent
+    SearchHeroPageComponent,
+    HeroCardComponent,
+    HeroesImgPipe
   ],
   imports: [
     CommonModule,
-    HeroesRoutingModule
+    HeroesRoutingModule,
+    MaterialModule,
+    ReactiveFormsModule
   ]
 })
 export class HeroesModule { }
