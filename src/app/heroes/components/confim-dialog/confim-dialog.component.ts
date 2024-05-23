@@ -14,11 +14,11 @@ export class ConfimDialogComponent {
     public data: Hero) { }
 
   onNoClick(): void {
-    this.dialogRef.close();
+    this.dialogRef.close(false);
   }
 
   onConfirm(): void{
-    this.dialogRef.close();
+    this.dialogRef.close(true);
 
   }
 }
