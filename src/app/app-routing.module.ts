@@ -1,14 +1,20 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes, CanMatch } from '@angular/router';
 import { Error404Component } from './shared/pages/error404/error404.component';
+import { AuthGuard } from './auth/guard/auth.guard';
+import { PublicGuard } from './auth/guard/public.guard';
 
 const routes: Routes = [{
   path: 'auth',
-  loadChildren: ()=> import('./auth/auth.module').then(m => m.AuthModule)
+  loadChildren: ()=> import('./auth/auth.module').then(m => m.AuthModule),
+  canActivate:[ PublicGuard ],
+  canMatch:[PublicGuard]
   },
   {
     path:'heroes',
-    loadChildren:()=> import('./heroes/heroes.module').then(m=> m.HeroesModule)
+    loadChildren:()=> import('./heroes/heroes.module').then(m=> m.HeroesModule),
+    canActivate:[ AuthGuard ],
+    canMatch:[AuthGuard]
   },
   {
     path:'404',
