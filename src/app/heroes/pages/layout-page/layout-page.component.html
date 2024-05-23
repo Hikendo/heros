@@ -25,7 +25,10 @@
         <mat-icon>menu</mat-icon>
       </button>
       <span class="spacer"></span>
-      <button mat-icon-button class="justify-content-end">
+      <button mat-icon-button
+      (click)="onLogout()"
+      class="justify-content-end">
+        <span> {{user?.email}} </span>
         <mat-icon>lock-open</mat-icon>Logout
       </button>
 

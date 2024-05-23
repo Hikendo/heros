@@ -1,8 +1,9 @@
+
 {
   "users": [
     {
-      "id": "1",
-      "usuario": "John Doe",
+      "id": 1,
+      "user": "John Doe",
       "email": "john.due@gmail.com"
     }
   ],
@@ -166,27 +167,7 @@
       "alter_ego": "Norrin Radd",
       "first_appearance": "The Fantastic Four #48",
       "characters": "Norrin Radd"
-    },
-    {
-      "id": "07a7"
-    },
-    {
-      "id": "9838"
-    },
-    {
-      "id": "5e29"
-    },
-    {
-      "id": "2193"
-    },
-    {
-      "id": "85b6"
-    },
-    {
-      "id": "b27d"
-    },
-    {
-      "id": "d518"
     }
   ]
 }
+
