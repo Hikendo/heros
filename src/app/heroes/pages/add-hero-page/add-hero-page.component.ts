@@ -4,6 +4,9 @@ import { Hero, Publisher } from '../../interfaces/hero';
 import { HeroService } from '../../service/hero.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { switchMap } from 'rxjs';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfimDialogComponent } from '../../components/confim-dialog/confim-dialog.component';
 
 @Component({
   selector: 'app-add-hero-page',
@@ -24,7 +27,9 @@ export class AddHeroPageComponent implements OnInit {
 
   constructor(private heroService:HeroService,
     private activatedRoute: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private snackbar: MatSnackBar,
+    private dialog: MatDialog
   ){}
 
   get currentHero():Hero{
@@ -44,17 +49,40 @@ export class AddHeroPageComponent implements OnInit {
       this.heroService.updateHero(this.currentHero).subscribe(
         hero => {
           //ToDo : mostrar snackbar
+          this.showSnackbar(`${hero.superhero} updated`)
 
         }
       );
       return;
     }
-    this.heroService.addHero(this.currentHero).subscribe(
+    this.heroService.addHero(this.currentHero).subscribe( hero=>
       {
-        //ToDo: mostrar snackbar y navegar a /heroes/edit:id
+        this.router.navigate(['/heroes/edit',hero.id]);
+        this.showSnackbar(`${hero.superhero} created`);
       }
     )
 
+  }
+  onConfirmDeleteHero(){
+      if (!this.currentHero.id) throw Error('Hero Id is required');
+      let dialogRef = this.dialog.open(ConfimDialogComponent, {
+        width: '250px',
+        data: this.heroForm.value
+      });
+
+      dialogRef.afterClosed().subscribe(result => {
+        console.log('The dialog was closed');
+        //todo
+      });
+
+
+  }
+  showSnackbar(message: string):void{
+    this.snackbar.open(message, 'done',
+      {
+        duration: 2500,
+      }
+    )
   }
   ngOnInit(): void {
 

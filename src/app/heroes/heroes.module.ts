@@ -11,6 +11,7 @@ import { MaterialModule } from '../material/material.module';
 import { HeroCardComponent } from './components/hero-card/hero-card.component';
 import { HeroesImgPipe } from './pipes/heroes-img.pipe';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ConfimDialogComponent } from './components/confim-dialog/confim-dialog.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     AddHeroPageComponent,
     SearchHeroPageComponent,
     HeroCardComponent,
-    HeroesImgPipe
+    HeroesImgPipe,
+    ConfimDialogComponent
   ],
   imports: [
     CommonModule,
