@@ -6,30 +6,42 @@
   <div class="col-12 sm:col-6">
     <mat-card>
       <mat-card-content>
-        <div class="grid">
-          <mat-form-field class="col-12">
+
+        <form class="grid" [formGroup]="heroForm" (ngSubmit)="onSubmit()">
+
+          <mat-form-field class="col-6">
             <mat-label>Nombre Super Heroe</mat-label>
-            <input type="text" matInput required>
+            <input type="text" matInput required
+           formControlName="superhero" >
+          </mat-form-field>
+          <mat-form-field class="col-6">
+            <mat-label>Alter Ego</mat-label>
+            <input type="text" matInput required
+            formControlName="alter_ego">
           </mat-form-field>
           <mat-form-field class="col-12">
-            <mat-label>Alter Ego</mat-label>
-            <input type="text" matInput required>
+            <mat-label>Personajes</mat-label>
+            <input type="text" matInput required
+            formControlName="characters">
           </mat-form-field>
           <mat-form-field class="col-12">
             <mat-label>Primera Aparicion</mat-label>
-            <input type="text" matInput required>
+            <input type="text" matInput required
+            formControlName="first_appearance">
           </mat-form-field>
           <mat-form-field class="col-12">
             <mat-label>Editorial</mat-label>
-              <mat-select required="">
+              <mat-select required=""
+              formControlName="publisher">
                 <mat-option  *ngFor="let publisher of publishers" [value]="publisher.id">{{publisher.describe}}</mat-option>
               </mat-select>
           </mat-form-field>
           <mat-form-field class="col-12">
-            <mat-label>Primera Aparicion</mat-label>
-            <input type="text" matInput required>
+            <mat-label>Alternative Image</mat-label>
+            <input type="text" matInput
+            formControlName="alt_img">
           </mat-form-field>
-        </div>
+        </form>
         <div class="flex justify-content-between">
           <button mat-flat-button
           color="warn"
@@ -38,6 +50,7 @@
           </button>
           <button mat-flat-button
           color="primary"
+          (click)="onSubmit()"
           >
             Guardar
           </button>
@@ -48,10 +61,10 @@
 
   </div>
   <div class="col-12 sm:col-6">
-    hey
+
     <mat-card>
       <img
-        src="assets/no-image.png"
+        [src]="currentHero |heroesImg"
         alt=""
       />
 
